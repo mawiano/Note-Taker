@@ -19,3 +19,8 @@ app.use(express.static("public"));
 app.get("/notes", (req, res) => {
 res.sendFile(path.join(__dirname, "/public/index.html"));
 });
+
+// get route to return index.html, GET * should return the index.html file.
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "/public/index.html"))
+});
