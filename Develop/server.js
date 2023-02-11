@@ -11,3 +11,11 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended: true }));
 app.use("api", api);
+
+// using HTML and CSS from the public older
+app.use(express.static("public"));
+
+// get route to return notes.html 
+app.get("/notes", (req, res) => {
+res.sendFile(path.join(__dirname, "/public/index.html"));
+});
