@@ -18,11 +18,13 @@ app.use(express.static("public"));
 // get route to return notes.html 
 app.get("/notes", (req, res) => {
 res.sendFile(path.join(__dirname, "/public/index.html"));
+console.info(`${req.method} request was received for notes html file`);
 });
 
 // get route to return index.html, GET * should return the index.html file.
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "/public/index.html"))
+    console.info(`${req.method} request received to get index.html file`);
 });
 
 // function to listen for the PORT
