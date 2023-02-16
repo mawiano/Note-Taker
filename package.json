@@ -2,9 +2,10 @@
   "name": "note-taker",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,10 @@
   "bugs": {
     "url": "https://github.com/mawiano/Note-Taker/issues"
   },
-  "homepage": "https://github.com/mawiano/Note-Taker#readme"
+  "homepage": "https://github.com/mawiano/Note-Taker#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^2.0.20",
+    "uniqid": "^5.4.0"
+  }
 }
