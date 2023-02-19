@@ -1,33 +1,55 @@
+// require libraries
 const express = require("express");
-// using this path to send to notes.html
 const path = require("path");
-// requiring the index.js file 
-const api = require("./Routes/index.js")
+const api = require('./routes/index.js');
 
+// initialize port
 const PORT = process.env.PORT || 3001;
+
+// initialize app to run express()
 const app = express();
 
-// middleware
+// initialize middleware
 app.use(express.json());
-app.use(express.urlencoded({extended: true }));
-app.use("api", api);
+app.use(express.urlencoded({ extended: true }));
+app.use('/api', api);
 
-// using HTML and CSS from the public older
+// set static folder (essentially telling express that anything static comes from the public folder)
 app.use(express.static("public"));
 
-// get route to return notes.html 
+// GET /notes ~ should return the notes.html file
 app.get("/notes", (req, res) => {
-res.sendFile(path.join(__dirname, "/public/index.html"));
-console.info(`${req.method} request was received for notes html file`);
+  // send file
+  res.sendFile(path.join(__dirname, "/public/notes.html"));
+  // log request to terminal
+  console.info(`${req.method} request received to get notes html file`);
 });
 
-// get route to return index.html, GET * should return the index.html file.
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "/public/index.html"))
-    console.info(`${req.method} request received to get index.html file`);
-});
+// GET * (wildcard route) ~ should return the index.html file
+app.get('*', (req, res) => {
+    // send file
+    res.sendFile(path.join(__dirname, '/public/index.html'))
+    // log request to terminal
+    console.info(`${req.method} request received to get index html file`);
+})
 
-// function to listen for the PORT
+// at the bottom - listener ~ app.listen(PORT, () =>)
 app.listen(PORT, () =>
-console.log(`App is listening on http://localhost:${PORT}`)
+  console.log(`App is listening on http://localhost:${PORT}`)
 );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
